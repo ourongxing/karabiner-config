@@ -1,3 +1,3 @@
 # Karabiner Config
 
-using [karabiner.ts](https://github.com/evan-liu/karabiner.ts)
+Using [karabiner.ts](https://github.com/evan-liu/karabiner.ts)
