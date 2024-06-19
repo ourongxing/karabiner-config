@@ -7,7 +7,7 @@ import {
   withModifier
 } from "karabiner.ts"
 import { hammerspoonEvent } from "../utils"
-// caps_lock 这才只一层，还能继续加修饰键的，比如 caps + shift，只能说 karabiner 是真厉害，这个 API 设计得也厉害。
+// caps_lock 这才只一层，还能继续加修饰键的，比如 caps + shift，只能说 karabiner 是真牛逼，这个 API 设计得也牛逼。
 export default layer("caps_lock", "caps modifier mode")
   .configKey(
     v =>
@@ -60,8 +60,11 @@ export default layer("caps_lock", "caps modifier mode")
       .singleTap(toKey("u", "Hyper")),
 
     map("return_or_enter").toApp("Warp"),
-    // Menubar X
+    // Menubar X flomo
     map("x").to("x", "Hyper"),
+
+    // Menubar X github
+    map("c").to("c", "Hyper"),
 
     // Reminders MenuBar
     map("z").to("z", "Hyper"),
