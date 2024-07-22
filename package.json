@@ -1,12 +1,9 @@
 {
   "name": "karabiner-config",
   "scripts": {
-    "build": "tsx src/index.ts"
+    "build": "bun run src/index.ts"
   },
   "devDependencies": {
-    "@types/node": "^20.12.12",
-    "karabiner.ts": "^1.29.0",
-    "tsx": "^4.10.3",
-    "typescript": "^5.4.5"
+    "karabiner.ts": "^1.29.0"
   }
 }

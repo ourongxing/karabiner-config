@@ -27,7 +27,10 @@ const rules = [
     map("tab", "<⌘").to("tab", "<⌥"),
     map("w", "<⌥").to("w", "<⌘"),
     map("w", "<⌘⇧").to("w", "<⌥⇧"),
-    map("q", "<⌘⇧").to("q", "<⌥⇧")
+    map("q", "<⌘⇧").to("q", "<⌥⇧"),
+    withCondition(ifApp("QReader.MarginStudy.easy"))([
+      map("delete_forward").to("delete_or_backspace", "<⌘")
+    ])
   ])
 ]
 

@@ -26,7 +26,7 @@ const mediaFN = [
   map("f12").to("volume_increment")
 ]
 
-const fnKeys: FunctionKeyCode[] = [
+export const fnKeys: FunctionKeyCode[] = [
   "f1",
   "f2",
   "f3",
@@ -42,17 +42,14 @@ const fnKeys: FunctionKeyCode[] = [
 ]
 
 function ohmymn(v4?: boolean) {
+  const schema = v4 ? "marginnote4app" : "marginnote3app"
   return withMapper(fnKeys)((key, i) =>
     i < 8
       ? map(key).to$(
-          `open -g '${
-            v4 ? "marginnote4app" : "marginnote3app"
-          }://addon/ohmymn?type=card&shortcut=${i + 1}'`
+          `open -g '${schema}://addon/ohmymn?type=card&shortcut=${i + 1}'`
         )
       : map(key).to$(
-          `open -g '${
-            v4 ? "marginnote4app" : "marginnote3app"
-          }://addon/ohmymn?type=text&shortcut=${i - 7}'`
+          `open -g '${schema}://addon/ohmymn?type=text&shortcut=${i - 7}'`
         )
   )
 }

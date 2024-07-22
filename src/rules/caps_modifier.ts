@@ -63,8 +63,9 @@ export default layer("caps_lock", "caps modifier mode")
     // Menubar X flomo
     map("x").to("x", "Hyper"),
 
-    // Menubar X github
     map("c").to("c", "Hyper"),
+    // Menubar X github
+    map("v").to("v", "Hyper"),
 
     // Reminders MenuBar
     map("z").to("z", "Hyper"),
