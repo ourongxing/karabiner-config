@@ -1,12 +1,4 @@
-import {
-  ifApp,
-  map,
-  mapDoubleTap,
-  rule,
-  toKey,
-  withCondition,
-  writeToProfile
-} from "karabiner.ts"
+import { ifApp, map, mapDoubleTap, rule, toKey, withCondition, writeToProfile } from "karabiner.ts"
 import capsModifier from "./rules/caps_modifier"
 import reset from "./rules/reset"
 import { hammerspoonEvent } from "./utils"
@@ -25,6 +17,7 @@ const rules = [
     // 切换输入法
     map("left_shift").to("left_shift").toIfAlone("spacebar", "Hyper"),
     map("tab", "<⌘").to("tab", "<⌥"),
+    map("caps_lock", "<⌘").to("escape", "<⌘"),
     map("w", "<⌥").to("w", "<⌘"),
     map("w", "<⌘⇧").to("w", "<⌥⇧"),
     map("q", "<⌘⇧").to("q", "<⌥⇧"),

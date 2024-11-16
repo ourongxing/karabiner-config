@@ -1,16 +1,9 @@
-import {
-  layer,
-  map,
-  mapDoubleTap,
-  toInputSource,
-  toKey,
-  withModifier
-} from "karabiner.ts"
+import { layer, map, mapDoubleTap, toInputSource, toKey, withModifier } from "karabiner.ts"
 import { hammerspoonEvent } from "../utils"
 // caps_lock 这才只一层，还能继续加修饰键的，比如 caps + shift，只能说 karabiner 是真牛逼，这个 API 设计得也牛逼。
 export default layer("caps_lock", "caps modifier mode")
   .configKey(
-    v =>
+    (v) =>
       // vim
       v.toIfAlone([
         toKey("escape"),
@@ -39,12 +32,8 @@ export default layer("caps_lock", "caps modifier mode")
     map("right_arrow").to("apple_display_brightness_increment"),
 
     // 最近下载的文件
-    map("n").to$(
-      `open -a "QSpace Pro" ~/Downloads/"$(ls -t ~/Downloads | head -n 1)"`
-    ),
-    map("n", "shift").to$(
-      `open ~/Downloads/"$(ls -t ~/Downloads | head -n 1)"`
-    ),
+    map("n").to$(`open -a "QSpace Pro" ~/Downloads/"$(ls -t ~/Downloads | head -n 1)"`),
+    map("n", "shift").to$(`open ~/Downloads/"$(ls -t ~/Downloads | head -n 1)"`),
 
     map("r").to(hammerspoonEvent("reload")),
 

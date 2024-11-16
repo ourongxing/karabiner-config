@@ -1,13 +1,4 @@
-import {
-  FunctionKeyCode,
-  ifApp,
-  ifDevice,
-  layer,
-  map,
-  rule,
-  withCondition,
-  withMapper
-} from "karabiner.ts"
+import { FunctionKeyCode, ifApp, layer, map, rule, withCondition, withMapper } from "karabiner.ts"
 
 const mediaFN = [
   map("f1").to("display_brightness_decrement"),
@@ -45,30 +36,25 @@ function ohmymn(v4?: boolean) {
   const schema = v4 ? "marginnote4app" : "marginnote3app"
   return withMapper(fnKeys)((key, i) =>
     i < 8
-      ? map(key).to$(
-          `open -g '${schema}://addon/ohmymn?type=card&shortcut=${i + 1}'`
-        )
-      : map(key).to$(
-          `open -g '${schema}://addon/ohmymn?type=text&shortcut=${i - 7}'`
-        )
+      ? map(key).to$(`open -g '${schema}://addon/ohmymn?type=card&shortcut=${i + 1}'`)
+      : map(key).to$(`open -g '${schema}://addon/ohmymn?type=text&shortcut=${i - 7}'`)
   )
 }
 
 const standFN = [
   withCondition(ifApp("QReader.MarginStudyMac"))([ohmymn()]),
   withCondition(ifApp("QReader.MarginStudy.easy"))([ohmymn(true)]),
-  withMapper(fnKeys)(key => map(key).to(key))
+  withMapper(fnKeys)((key) => map(key).to(key))
 ]
 
-export const normal = rule("function key").manipulators([
-  withCondition(ifDevice({ is_built_in_keyboard: false }))(standFN),
-  withCondition(ifDevice({ is_built_in_keyboard: true }))(mediaFN)
-])
+export const normal = rule("function key").manipulators(
+  // withCondition(ifDevice({ is_built_in_keyboard: false }))(standFN),
+  // withCondition(ifDevice({ is_built_in_keyboard: true }))(mediaFN)
+  standFN
+)
 
-export const modifier = layer(
-  "escape",
-  "escape as fnKey modifier"
-).manipulators([
-  withCondition(ifDevice({ is_built_in_keyboard: false }))(mediaFN),
-  withCondition(ifDevice({ is_built_in_keyboard: true }))(standFN)
-])
+export const modifier = layer("escape", "escape as fnKey modifier").manipulators(
+  // withCondition(ifDevice({ is_built_in_keyboard: false }))(mediaFN),
+  // withCondition(ifDevice({ is_built_in_keyboard: true }))(standFN)
+  standFN
+)
