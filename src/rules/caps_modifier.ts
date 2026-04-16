@@ -65,6 +65,7 @@ export default layer("caps_lock", "caps modifier mode")
       .singleTap(toKey("print_screen", "Hyper")),
     // Shotter 截图
     map("o").to("o", "Hyper"),
+    map("i").to("i", "Hyper"),
     map("p").to("p", "Hyper"),
     map("[").to("[", "Hyper"),
     map("]").to("]", "Hyper")
