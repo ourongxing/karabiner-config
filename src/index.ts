@@ -1,30 +1,16 @@
-import { ifApp, map, mapDoubleTap, rule, toKey, withCondition, writeToProfile } from "karabiner.ts"
+import { writeToProfile } from "karabiner.ts"
 import capsModifier from "./rules/caps_modifier"
 import reset from "./rules/reset"
-import { hammerspoonEvent } from "./utils"
+import inputSource from "./rules/input_source"
 import * as functionKeys from "./rules/function_keys"
+import other from "./rules/other"
 
-const rules = [
+
+writeToProfile("Default", [
   reset,
+  inputSource,
   capsModifier,
   functionKeys.modifier,
   functionKeys.normal,
-  rule("other").manipulators([
-    // 飞书 录屏
-    mapDoubleTap("print_screen")
-      .to(hammerspoonEvent("switch", { app: "com.electron.lark" }))
-      .singleTap(toKey("i", "Hyper")),
-    // 切换输入法
-    map("left_shift").to("left_shift").toIfAlone("spacebar", "Hyper"),
-    map("tab", "<⌘").to("tab", "<⌥"),
-    map("caps_lock", "<⌘").to("escape", "<⌘"),
-    map("w", "<⌥").to("w", "<⌘"),
-    map("w", "<⌘⇧").to("w", "<⌥⇧"),
-    map("q", "<⌘⇧").to("q", "<⌥⇧"),
-    withCondition(ifApp("QReader.MarginStudy.easy"))([
-      map("delete_forward").to("delete_or_backspace", "<⌘")
-    ])
-  ])
-]
-
-writeToProfile("Default", rules)
+  other,
+])
